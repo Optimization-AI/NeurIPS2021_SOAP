@@ -15,7 +15,7 @@ We random sample 0.02 percent of samples from the last half of classes as the mi
 ##### Melanoma
 The Melanoma dataset is from a medical image Kaggle competition, which serves as a natural real imbalanced image dataset. It contains 33,126 labeled medical images, \
 among which 584 images are related to malignant melanoma and labelled as positive samples. \
-We manually split the training data into train/validation/test set at 80%/10%/10% ratio and report the achieved AUPRC on test results. \
+We manually split the training data into train/validation/test set at 80%/10%/10% ratio and report the achieved AUPRC on test results. 
 The split csv are provided in: **./data/melanoma/{train, test, valid}_split.csv**
 
 
