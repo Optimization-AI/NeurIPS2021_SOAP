@@ -11,7 +11,7 @@ torch>=1.7.0
 For each dataset we manually take the first half of classes as positive class and last half of classes as negative class. \
 **imb_ratio** = the number samples in positive classes / the number of samples in negative classes \
 The imb_ratio is 0.02 for both datasets. To construct highly imbalanced data, we remove 98% of the positive images from the training data and keep the test data unchanged.\
-We random sample 0.02 percent of samples from the last half of classes as the minority classes. The indexes can be found in **imbalaced_cifar.py** \
+We random sample 0.02 percent of samples from the last half of classes as the minority classes. The indexes can be found in **imbalaced_cifar.py** 
 ##### Melanoma
 The Melanoma dataset is from a medical image Kaggle competition, which serves as a natural real imbalanced image dataset. It contains 33,126 labeled medical images, \
 among which 584 images are related to malignant melanoma and labelled as positive samples. \
