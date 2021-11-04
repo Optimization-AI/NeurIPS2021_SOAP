@@ -80,11 +80,10 @@ We use the same conf['posNum'] = 1 both for all the baselines.
 To replicate the SOAP results in Table 2, Run:
 ```
  CUDA_VISIBLE_DEVICES=0 python3 -W ignore main_hiv.py
- CUDA_VISIBLE_DEVICES=0 python3 -W ignore main_hiv.py
 ```
  | HIV | Network |       GINE       |       MPNN      |       MLPNN      |
 |-----|:-------:|:----------------:|:---------------:|:----------------:|
-|     |   SOAP  |0.3462 (0.0083)  | 0.3406 (0.0053) | 0.3646 (0.0076) |
+| mean (std)    |   SOAP  |0.3462 (0.0083)  | 0.3406 (0.0053) | 0.3646 (0.0076) |
 
 The wrapped package can be found in https://github.com/Optimization-AI/LibAUC/
 with the following installation and cases command:
