@@ -13,7 +13,7 @@ For each dataset we manually take the first half of classes as positive class an
 **imb_ratio** = the number samples in positive classes / the number of samples in negative classes \
 The imb_ratio is 0.02 for both datasets. To construct highly imbalanced data, we remove 98% of the positive images from the training data and keep the test data unchanged.\
 We random sample 0.02 percent of samples from the last half of classes as the minority classes. The indexes can be found in **imbalaced_cifar.py** 
-##### Melanoma
+##### [Melanoma](https://www.kaggle.com/c/siim-isic-melanoma-classification/data)
 The Melanoma dataset is from a medical image Kaggle competition, which serves as a natural real imbalanced image dataset. It contains 33,126 labeled medical images, \
 among which 584 images are related to malignant melanoma and labelled as positive samples. \
 We manually split the training data into train/validation/test set at 80%/10%/10% ratio and report the achieved AUPRC on test results. 
