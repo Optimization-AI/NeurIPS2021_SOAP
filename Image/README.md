@@ -1,9 +1,9 @@
 
 
 ### Configuration
-Dependencies:
-python>=3.6.8
-torch>=1.7.0
+Dependencies: \
+python>=3.6.8 \
+torch>=1.7.0 
 
 
 ### Data
@@ -29,7 +29,7 @@ Arch: ResNet18, ResNet34 for all three datasets.
 ### Algorithm and Pretrained Models
 Proposed loss and the SOAP algorithm is implemented in SOAP.py \
 SOAP algorithm with **squared hinge (sqh)** surrogate loss are trained from ce_pretrained models. \
-The **pretrained models** for **CIFAR10, CIFAR100, Melanoma** data are provided in the https://drive.google.com/drive/folders/13Bxt0eLeOKNEPbwbq1oEeOLNo9AhnQvr?usp=sharing \
+The **pretrained models** for **CIFAR10, CIFAR100, Melanoma** data are provided in https://drive.google.com/drive/folders/13Bxt0eLeOKNEPbwbq1oEeOLNo9AhnQvr?usp=sharing \
 Unzip the downloaded models to: \
 **cepretainmodels/**:
 -  cifar10_resnet18_002.ckpt
