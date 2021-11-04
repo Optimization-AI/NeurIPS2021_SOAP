@@ -50,7 +50,7 @@ Unzip the downloaded models to: \
   --**batch_size**: batch size | **conf['batch_size'] = 64** \
   --**data_length**: length of the dataset \
   --**loss_type**: squared hinge surrogate loss for SOAP | **conf['surr_loss'] = 'sqh'** \
-  --**gamma**:  gamma parameter in the paper | mv_gamma
+  --**gamma**:  gamma parameter in the paper | mv_gamma = {0.9, 0.99}
 
 **conf['ft_mode']** = 'fc_random': Reinitializing the Fully-Connected layer for the pretrained model when starting training SOAP.
 **conf['pre_train']** = { None : training from scratch,
