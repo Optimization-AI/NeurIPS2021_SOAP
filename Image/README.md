@@ -22,7 +22,7 @@ The split csv are provided in: **./data/melanoma/{train, test, valid}_split.csv*
 
 
 ### Model
-Arch: ResNet18, ResNet34 for all three datasets.\
+Arch: ResNet18, ResNet34 for all three datasets.
 
 
 
@@ -30,7 +30,7 @@ Arch: ResNet18, ResNet34 for all three datasets.\
 Proposed loss and the SOAP algorithm is implemented in SOAP.py \
 SOAP algorithm with **squared hinge (sqh)** surrogate loss are trained from ce_pretrained models. \
 The **pretrained models** for **CIFAR10, CIFAR100, Melanoma** data are provided in the https://drive.google.com/drive/folders/13Bxt0eLeOKNEPbwbq1oEeOLNo9AhnQvr?usp=sharing \
-Unzip the download models to: \
+Unzip the downloaded models to: \
 **cepretainmodels/**:
 -  cifar10_resnet18_002.ckpt
 -  cifar10_resnet34_002.ckpt
