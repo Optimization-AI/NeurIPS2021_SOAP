@@ -18,9 +18,13 @@ Use tran_data.py to get GNN features from .csv data files.
 
 ### Model
 GINE -- a variant of GIN model
+
 MPNN -- message passing neural network
+
 MLN -- GNN in MoleculeKit
+
 GINE and MPNN are implemented in gine_mpnn.py
+
 MLN is implemented in model.py
 
 
