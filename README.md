@@ -6,7 +6,7 @@ This is the official implementation of the paper "**Stochastic Optimization of A
 Benchmark Datasets
 ---------
 **Image**: CIFAR10, CIFAR100, Melanoma \
-**Graph**: HIV
+**Graph**: HIV, MUV, AICures
 
 Package
 ----------
