@@ -7,7 +7,8 @@ torch>=1.7.0
 
 
 ### Data
-##### CIFAR10, CIFAR100
+
+##### [CIFAR10](https://www.cs.toronto.edu/~kriz/cifar.html), [CIFAR100](https://www.cs.toronto.edu/~kriz/cifar.html)
 For each dataset we manually take the first half of classes as positive class and last half of classes as negative class. \
 **imb_ratio** = the number samples in positive classes / the number of samples in negative classes \
 The imb_ratio is 0.02 for both datasets. To construct highly imbalanced data, we remove 98% of the positive images from the training data and keep the test data unchanged.\
