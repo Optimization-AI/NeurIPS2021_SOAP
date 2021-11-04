@@ -54,4 +54,4 @@ If you find this repo helpful, please cite the following paper:
 
 Contact
 ----------
-If you have any questions, please contact us @ [Qi Qi](https://homepage.divms.uiowa.edu/~zhuoning/) [qi-qi@uiowa.edu] , and [Tianbao Yang](https://homepage.cs.uiowa.edu/~tyng/) [tianbao-yang@uiowa.edu] or please open a new issue in the Github. 
+If you have any questions, please contact us @ [Qi Qi](https://qiqi-helloworld.github.io/) [qi-qi@uiowa.edu] , and [Tianbao Yang](https://homepage.cs.uiowa.edu/~tyng/) [tianbao-yang@uiowa.edu] or please open a new issue in the Github. 
