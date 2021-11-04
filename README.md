@@ -5,7 +5,7 @@ This is the official implementation of the paper "**Stochastic Optimization of A
 
 Benchmark Datasets
 ---------
-**Image**: [CIFAR10](https://www.cs.toronto.edu/~kriz/cifar.html), [CIFAR100](https://www.cs.toronto.edu/~kriz/cifar.html) [Melanoma](https://www.kaggle.com/c/siim-isic-melanoma-classification/data) \
+**Image**: [CIFAR10](https://www.cs.toronto.edu/~kriz/cifar.html), [CIFAR100](https://www.cs.toronto.edu/~kriz/cifar.html), [Melanoma](https://www.kaggle.com/c/siim-isic-melanoma-classification/data) \
 **Graph**: HIV, MUV, AICures
 
 Package
