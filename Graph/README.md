@@ -14,7 +14,8 @@ https://pytorch-geometric.readthedocs.io/en/latest/notes/installation.html
 
 ### Data
 Use tran_data.py to get GNN features from .csv data files.\
-The preprocessed data can be found in google drive: https://drive.google.com/drive/folders/13Bxt0eLeOKNEPbwbq1oEeOLNo9AhnQvr?usp=sharing
+The preprocessed data can be found in google drive: https://drive.google.com/drive/folders/13Bxt0eLeOKNEPbwbq1oEeOLNo9AhnQvr?usp=sharing \
+Put the inner files and directories to the **./datasets**  to run the code.
 
 ### Model
 GINE -- a variant of GIN model \
