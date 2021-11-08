@@ -22,8 +22,9 @@ The split csv are provided in: **./data/melanoma/{train, test, valid}_split.csv*
 
 
 
-### Model
+### Model and Optimizer
 Arch: ResNet18, ResNet34 for all three datasets.
+Optimizer: SGD with Momentum 0.9
 
 
 
