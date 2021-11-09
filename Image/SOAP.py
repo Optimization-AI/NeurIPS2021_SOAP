@@ -142,7 +142,7 @@ class SOAPLOSS(nn.Module):
         p.detach_()
 
         loss = torch.sum(p * loss)
-        loss = loss.mean()
+   
 
         return loss
 
