@@ -40,8 +40,7 @@ class AUPRCSampler(Sampler):
         # In every iteration : sample 1(posNum) positive sample(s), and sample batchSize - 1(posNum) negative samples
         if len(minority_data_list) // self.posNum  >= len(majority_data_list)//(self.batchSize - self.posNum): # At this case, we go over the all positive samples in every epoch.
             # extend the length of majority_data_list from  len(majority_data_list) to len(minority_data_list)* (batchSize-posNum)
-            majority_data_list.extend(np.random.choice(majority_data_list, len(minority_data_list) // self.posNum * (self.batchSize - self.posNum) - len(majority_data_list), replace=True).tolist())
-
+            majority_data_list.extend(np.random.choice(majority_data_list, len(minority_data_list) // self.posNum * (self.batchSize - self.posNum) - len(majority_data_list), replace=True).tolist()
             for i in range(len(minority_data_list) // self.posNum):
                 if self.posNum == 1:
                     self.ret.append(minority_data_list[i])
@@ -55,7 +54,7 @@ class AUPRCSampler(Sampler):
         else: # At this case, we go over the all negative samples in every epoch.
             # extend the length of minority_data_list from len(minority_data_list) to len(majority_data_list)//(batchSize-posNum) + 1
 
-            minority_data_list.extend(np.random.choice(minority_data_list, len(majority_data_list) // (self.batchSize - self.posNum) + 1 - len(minority_data_list)//self.posNum, replace=True).tolist())
+            minority_data_list.extend(np.random.choice(minority_data_list, (len(majority_data_list) // (self.batchSize - self.posNum) + 1 - len(minority_data_list)//self.posNum)*self.posNum, replace=True).tolist())
             for i in range(0, len(majority_data_list), self.batchSize - self.posNum):
 
                 if self.posNum == 1:
