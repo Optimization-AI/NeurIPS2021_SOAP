@@ -29,18 +29,19 @@ if imb_ratio == 0.02:
 elif imb_ratio == 0.2:
     apdix = '020'
 
+np.random.seed(0)
 for conf['batch_size'] in [64]:
      for i in range(5):
          for loss_type in ['SOAP']:# , 'focal', 'auprc_lang', 'auroc2'
              conf['epochs'] = 64
              conf['ft_mode'] = 'fc_random'
-             conf['lr'] = 1e-6
+             conf['lr'] = 1e-3
              # rebuttal
              conf['pre_train'] = './cepretrainmodels/cifar100_' + model_name + '_' + apdix + '.ckpt' # imb_factor 0.02
              conf['surr_loss'] = 'sqh'
              tau = 1
-             conf['posNum'] = 1
-             th = 0.5
+             conf['posNum'] = 3
+             th = 0.6
              out_path = './Released_results/{}/cifar100/Pretrained_SGD_results_{}_bth_{}_epoch_{}_lr_{}_ft_mode_{}_tau_{}_posNum_{}_threshold_{}_repeats_{}_imb_{}_surrloss_{}'.format(model_name, loss_type,  conf['batch_size'], conf['epochs'], conf['lr'], conf['ft_mode'],tau, conf['posNum'], th, i, imb_ratio, conf['surr_loss'])
              if not os.path.exists(out_path):
                  os.makedirs(out_path)

@@ -33,7 +33,7 @@ for conf['batch_size'] in [64]:
          for loss_type in ['SOAP']:
              conf['epochs'] = 64
              conf['ft_mode'] = 'fc_random'
-             conf['lr'] = 1e-6
+             conf['lr'] = 1e-4
              conf['pre_train'] = './cepretrainmodels/cifar10_' + model_name + '_' + apdix + '.ckpt' # imb_factor 0.02
              conf['surr_loss'] = 'sqh'
              tau = 1
