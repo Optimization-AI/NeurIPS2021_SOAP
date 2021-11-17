@@ -34,35 +34,25 @@ class AUPRCSampler(Sampler):
         majority_data_list = self.dataDict[str(0)]
 
         # print(len(minority_data_list), len(majority_data_list))
-        random.shuffle(minority_data_list)
-        random.shuffle(majority_data_list)
+        np.random.shuffle(minority_data_list)
+        np.random.shuffle(majority_data_list)
 
         # In every iteration : sample 1(posNum) positive sample(s), and sample batchSize - 1(posNum) negative samples
-        if len(minority_data_list) // self.posNum  >= len(majority_data_list)//(self.batchSize - self.posNum): # At this case, we go over the all positive samples in every epoch.
+        if len(minority_data_list) // self.posNum  > len(majority_data_list)//(self.batchSize - self.posNum): # At this case, we go over the all positive samples in every epoch.
             # extend the length of majority_data_list from  len(majority_data_list) to len(minority_data_list)* (batchSize-posNum)
-            majority_data_list.extend(np.random.choice(majority_data_list, len(minority_data_list) // self.posNum * (self.batchSize - self.posNum) - len(majority_data_list), replace=True).tolist()
-            for i in range(len(minority_data_list) // self.posNum):
-                if self.posNum == 1:
-                    self.ret.append(minority_data_list[i])
-                else:
-                    self.ret.extend(minority_data_list[i*self.posNum:(i+1)*self.posNum])
+            majority_data_list.extend(np.random.choice(majority_data_list, len(minority_data_list) // self.posNum * (self.batchSize - self.posNum) - len(majority_data_list), replace=True).tolist())
 
-                startIndex = i*(self.batchSize - self.posNum)
-                endIndex = (i+1)*(self.batchSize - self.posNum)
-                self.ret.extend(majority_data_list[startIndex:endIndex])
-
-        else: # At this case, we go over the all negative samples in every epoch.
+        elif len(minority_data_list) // self.posNum  < len(majority_data_list)//(self.batchSize - self.posNum): # At this case, we go over the all negative samples in every epoch.
             # extend the length of minority_data_list from len(minority_data_list) to len(majority_data_list)//(batchSize-posNum) + 1
 
-            minority_data_list.extend(np.random.choice(minority_data_list, (len(majority_data_list) // (self.batchSize - self.posNum) + 1 - len(minority_data_list)//self.posNum)*self.posNum, replace=True).tolist())
-            for i in range(0, len(majority_data_list), self.batchSize - self.posNum):
+            minority_data_list.extend(np.random.choice(minority_data_list, len(majority_data_list) // (self.batchSize - self.posNum)*self.posNum - len(minority_data_list), replace=True).tolist())
 
-                if self.posNum == 1:
-                    self.ret.append(minority_data_list[i//(self.batchSize - self.posNum)])
-                else:
-                    self.ret.extend(minority_data_list[i//(self.batchSize- self.posNum)* self.posNum: (i//(self.batchSize-self.posNum) + 1)*self.posNum])
-
-                self.ret.extend(majority_data_list[i:i + self.batchSize - self.posNum])
+        self.ret = []
+        for i in range(len(minority_data_list) // self.posNum):
+            self.ret.extend(minority_data_list[i*self.posNum:(i+1)*self.posNum])
+            startIndex = i*(self.batchSize - self.posNum)
+            endIndex = (i+1)*(self.batchSize - self.posNum)
+            self.ret.extend(majority_data_list[startIndex:endIndex])
 
         return iter(self.ret)
 
@@ -70,15 +60,14 @@ class AUPRCSampler(Sampler):
     def __len__ (self):
         return len(self.ret)
 
-
 class SOAPLOSS(nn.Module):
     def __init__(self, threshold, batch_size, data_length, loss_type = 'sqh'):
         '''
         :param threshold: margin for squred hinge loss
         '''
         super(SOAPLOSS, self).__init__()
-        self.u_all = threshold**2/batch_size * torch.tensor([0]*data_length).view(-1, 1).cuda()
-        self.u_pos = threshold**2/batch_size * torch.tensor([0]*data_length).view(-1, 1).cuda()
+        self.u_all =  torch.tensor([0.0]*data_length).view(-1, 1).cuda()
+        self.u_pos =  torch.tensor([0.0]*data_length).view(-1, 1).cuda()
         self.threshold = threshold
         self.loss_type = loss_type
         print('The loss type is :', self.loss_type)
@@ -139,9 +128,7 @@ class SOAPLOSS(nn.Module):
 
 
         p.detach_()
-
-        loss = torch.sum(p * loss)
-   
+        loss = torch.mean(p * loss)
 
         return loss
 
