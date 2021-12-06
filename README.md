@@ -1,5 +1,4 @@
 # Stochastic Optimization of Areas Under Precision-Recall Curves with Provable Convergence [![pdf](https://img.shields.io/badge/Arxiv-pdf-orange.svg?style=flat)](https://arxiv.org/pdf/2104.08736.pdf)
-
 This is the official implementation of the paper "**Stochastic Optimization of Areas Under Precision-Recall Curves with Provable Convergence**" published on **Neurips2021**. 
 
 
