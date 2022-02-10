@@ -36,7 +36,9 @@ pip install libauc
         optimizer.step()
 ```
 
-**If you want to download the code that reproducing the reported table results for the Neurips 2021 paper, please go to the graph/image subdirectories and refer the inside README.md.**
+Reminder
+----------
+**If you want to download the code that reproducing the reported table results for the Neurips 2021 paper, please go to the Graph/Image subdirectories and refer the inside README.md.**
 
 
 
