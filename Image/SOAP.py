@@ -74,6 +74,15 @@ class SOAPLOSS(nn.Module):
 
 
     def forward(self,f_ps, f_ns, index_s, gamma):
+        '''
+        Params:
+            f_ps (Tensor array): positive prediction scores
+            f_ns (Tensor array): negative prediction scores
+            index_s (Tensor array): positive sample indexes
+            gamma (Tensor float): algorithm momentum parameter, by default 0.9
+        Return:
+            Mean Average Precision (AP) loss.
+        '''
         f_ps = f_ps.view(-1)
         f_ns = f_ns.view(-1)
 
