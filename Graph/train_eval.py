@@ -31,7 +31,7 @@ def run_classification(train_dataset, val_dataset, test_dataset, model, num_task
     elif loss_type in ['SOAP']:
         labels = [int(data.y.item()) for data in train_dataset]
         criterion = SOAPLOSS(loss_param['threshold'], batch_size,
-                             len(train_dataset) + len(val_dataset) + len(test_dataset), loss_param['type'])
+                             len(train_dataset) + len(val_dataset) + len(test_dataset), loss_param['type'],  loss_param['mv_gamma'])
     elif loss_type in ['sum']:
         criterion = torch.nn.BCEWithLogitsLoss(reduction='none')
         labels = [int(data.y.item()) for data in train_dataset]
@@ -171,7 +171,7 @@ def train_classification(model, optimizer, train_loader, num_tasks, device, epoc
         elif loss_type == 'SOAP':
             target = batch_data.y
             predScore = torch.nn.Sigmoid()(out)
-            loss = criterion(predScore[:posNum], predScore[posNum:], batch_data.idx.view(-1, 1).long(), loss_param['mv_gamma'])
+            loss = criterion(predScore[:posNum], predScore[posNum:], batch_data.idx.view(-1, 1).long())
             loss.backward()
             optimizer.step()
         elif loss_type == 'sum':
