@@ -84,6 +84,7 @@ class SOAPLOSS(nn.Module):
         self.u_pos = 1.0 * torch.tensor([0] * data_length).view(-1, 1).cuda()
         self.threshold = threshold
         self.loss_type = loss_type
+        self.gamma = gamma
         print('The loss type is :', self.loss_type)
 
     def forward(self, f_ps, f_ns, index_s):
@@ -118,11 +119,11 @@ class SOAPLOSS(nn.Module):
         loss = pos_loss + neg_loss
 
         if f_ps.size(0) == 1:
-            self.u_pos[index_s] = (1 - gamma) * self.u_pos[index_s] + gamma * (pos_loss.mean())
-            self.u_all[index_s] = (1 - gamma) * self.u_all[index_s] + gamma * (loss.mean())
+            self.u_pos[index_s] = (1 - self.gamma) * self.u_pos[index_s] + self.gamma * (pos_loss.mean())
+            self.u_all[index_s] = (1 - self.gamma) * self.u_all[index_s] + self.gamma * (loss.mean())
         else:
-            self.u_all[index_s] = (1 - gamma) * self.u_all[index_s] + gamma * (loss.mean(1, keepdim=True))
-            self.u_pos[index_s] = (1 - gamma) * self.u_pos[index_s] + gamma * (pos_loss.mean(1, keepdim=True))
+            self.u_all[index_s] = (1 - self.gamma) * self.u_all[index_s] + self.gamma * (loss.mean(1, keepdim=True))
+            self.u_pos[index_s] = (1 - self.gamma) * self.u_pos[index_s] + self.gamma * (pos_loss.mean(1, keepdim=True))
 
 
         p = (self.u_pos[index_s] - (self.u_all[index_s]) * pos_mask) / (self.u_all[index_s] ** 2)
