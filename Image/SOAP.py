@@ -61,11 +61,12 @@ class AUPRCSampler(Sampler):
         return len(self.ret)
 
 class SOAPLOSS(nn.Module):
-    def __init__(self, threshold, data_length, loss_type = 'sqh'):
+    def __init__(self, threshold, data_length, loss_type = 'sqh', gamma = 0.9):
         '''
         threshold: margin for squred hinge loss, e.g. 0.6
         data_length: number of samples in the dataset for moving avearage variable updates
         loss_type(str): type of surrogate losses, including, square hinge loss (sqh), logistic loss (lgs), and sigmoid loss (sgm)
+        gamma (Tensor float): algorithm momentum parameter, by default 0.9
         '''
         super(SOAPLOSS, self).__init__()
         self.u_all =  torch.tensor([0.0]*data_length).view(-1, 1).cuda()
@@ -75,13 +76,12 @@ class SOAPLOSS(nn.Module):
         print('The loss type is :', self.loss_type)
 
 
-    def forward(self,f_ps, f_ns, index_s, gamma = 0.9):
+    def forward(self,f_ps, f_ns, index_s):
         '''
         Params:
             f_ps (Tensor array): positive prediction scores
             f_ns (Tensor array): negative prediction scores
             index_s (Tensor array): positive sample indexes
-            gamma (Tensor float): algorithm momentum parameter, by default 0.9
         Return:
             Mean Average Precision (AP) loss.
         '''
