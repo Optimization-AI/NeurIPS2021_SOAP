@@ -73,6 +73,7 @@ class SOAPLOSS(nn.Module):
         self.u_pos =  torch.tensor([0.0]*data_length).view(-1, 1).cuda()
         self.threshold = threshold
         self.loss_type = loss_type
+        self.gamma = gamma
         print('The loss type is :', self.loss_type)
 
 
@@ -125,12 +126,12 @@ class SOAPLOSS(nn.Module):
 
         if f_ps.size(0) == 1:
 
-            self.u_pos[index_s] = (1 - gamma) * self.u_pos[index_s] + gamma * (pos_loss.mean())
-            self.u_all[index_s] = (1 - gamma) * self.u_all[index_s] + gamma * (loss.mean())
+            self.u_pos[index_s] = (1 - self.gamma) * self.u_pos[index_s] + self.gamma * (pos_loss.mean())
+            self.u_all[index_s] = (1 - self.gamma) * self.u_all[index_s] + self.gamma * (loss.mean())
         else:
             # print(self.u_all[index_s], loss.size(), loss.sum(1, keepdim = 1))
-            self.u_all[index_s] = (1 - gamma) * self.u_all[index_s] + gamma * (loss.mean(1, keepdim=True))
-            self.u_pos[index_s] = (1 - gamma) * self.u_pos[index_s] + gamma * (pos_loss.mean(1, keepdim=True))
+            self.u_all[index_s] = (1 - self.gamma) * self.u_all[index_s] + self.gamma * (loss.mean(1, keepdim=True))
+            self.u_pos[index_s] = (1 - self.gamma) * self.u_pos[index_s] + self.gamma * (pos_loss.mean(1, keepdim=True))
 
 
 
