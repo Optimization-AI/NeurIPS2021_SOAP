@@ -75,7 +75,7 @@ class AUPRCSampler(Sampler):
 
 
 class SOAPLOSS(nn.Module):
-    def __init__(self, threshold, batch_size, data_length, loss_type='sqh'):
+    def __init__(self, threshold, data_length, loss_type='sqh', gamma = 0.9):
         '''
         :param threshold: margin for squred hinge loss
         '''
@@ -86,7 +86,7 @@ class SOAPLOSS(nn.Module):
         self.loss_type = loss_type
         print('The loss type is :', self.loss_type)
 
-    def forward(self, f_ps, f_ns, index_s, gamma):
+    def forward(self, f_ps, f_ns, index_s):
         f_ps = f_ps.view(-1)
         f_ns = f_ns.view(-1)
 
