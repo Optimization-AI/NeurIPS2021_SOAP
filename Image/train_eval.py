@@ -86,7 +86,7 @@ def run_classification(i, train_dataset, val_dataset, test_dataset, model, num_t
         criterion = expAP
     elif loss_type in ['SOAP']:
         labels = [0] * (n_train - n_train_pos) + [1] * n_train_pos
-        criterion = SOAPLOSS(threshold=loss_param['threshold'], batch_size =  batch_size, data_length = len(train_dataset) + len(val_dataset), loss_type=surr_loss)
+        criterion = SOAPLOSS(threshold=loss_param['threshold'], data_length = len(train_dataset) + len(val_dataset), loss_type=surr_loss)
     # elif loss_type in ['SOAPINDI']:
     #     labels = [0] * (n_train - n_train_pos) + [1] * n_train_pos
     #     criterion = SOAPLOSSINDICATOR(threshold=loss_param['threshold'], batch_size=batch_size, data_length = len(train_dataset) + len(val_dataset), loss_type=surr_loss)
