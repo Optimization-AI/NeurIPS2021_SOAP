@@ -75,7 +75,7 @@ class SOAPLOSS(nn.Module):
         print('The loss type is :', self.loss_type)
 
 
-    def forward(self,f_ps, f_ns, index_s, gamma):
+    def forward(self,f_ps, f_ns, index_s, gamma = 0.9):
         '''
         Params:
             f_ps (Tensor array): positive prediction scores
@@ -105,7 +105,6 @@ class SOAPLOSS(nn.Module):
         # print(f_ps.size(), mat_data.size(), test_tmp.size())
 
         # 3*1 - 3*64 ==> 3*64
-
         if self.loss_type == 'sqh':
 
             neg_loss = torch.max(self.threshold - (f_ps - mat_data), torch.zeros_like(mat_data)) ** 2 * neg_mask
