@@ -61,9 +61,11 @@ class AUPRCSampler(Sampler):
         return len(self.ret)
 
 class SOAPLOSS(nn.Module):
-    def __init__(self, threshold, batch_size, data_length, loss_type = 'sqh'):
+    def __init__(self, threshold, data_length, loss_type = 'sqh'):
         '''
-        :param threshold: margin for squred hinge loss
+        threshold: margin for squred hinge loss, e.g. 0.6
+        data_length: number of samples in the dataset for moving avearage variable updates
+        loss_type(str): type of surrogate losses, including, square hinge loss (sqh), logistic loss (lgs), and sigmoid loss (sgm)
         '''
         super(SOAPLOSS, self).__init__()
         self.u_all =  torch.tensor([0.0]*data_length).view(-1, 1).cuda()
