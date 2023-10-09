@@ -5,7 +5,7 @@ import torch.nn as nn
 import numpy as np
 from torch.utils.data.sampler import Sampler
 import random
-# from imbalanced_loss import logistic_loss, sigmoid_loss
+from imbalanced_loss import logistic_loss, sigmoid_loss
 
 
 class AUPRCSampler(Sampler):
